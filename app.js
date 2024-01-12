@@ -7,11 +7,13 @@ var bodyParser = require('body-parser');
 const port = process.env.PORT ||5000;
 const adminRoute = require('./routes/AdminRoutes');
 const courseRoute = require('./routes/CoursesRoutes')
+const menuRoute = require('./routes/menuRoutes')
 app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/admin',adminRoute)
 app.use('/course',courseRoute)
+app.use('/menu',menuRoute)
 app.listen(port,()=>{
     console.log(`Server running on port ${port}`)
 })

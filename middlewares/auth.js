@@ -5,7 +5,7 @@ const secret=process.env.SECRET_KEY
 const AuthenticateRequest =(req,res,next)=>{
     try{
     console.log(req.headers,'headers')
-    let token =req.headers.authorization.split(' ')[1]
+    let token =req?.headers?.authorization?.split(' ')[1]
     if(!token){
         return res.status(401).json({ error: 'Unauthorized - No token provided' });
     }

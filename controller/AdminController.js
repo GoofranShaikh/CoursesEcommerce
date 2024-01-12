@@ -20,7 +20,7 @@ const getAdminDetails=async(req,res)=>{
             };
 
             let token = jwt.sign(payload,sectrateKey,options)
-            res.status(200).json({token})
+            res.status(200).json({...user.recordsets?.[0][0],token})
 
         }
         else{
