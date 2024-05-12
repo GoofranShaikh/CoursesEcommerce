@@ -44,7 +44,6 @@ async function GetCourses(){
     const pool = await sql.connect(dbconfig);
     let sp = 'GetCourses';
     let courses=await pool.request().execute(sp)
-    console.log(courses.recordsets[0],'courses.recordsets[0]')
     return courses.recordsets[0];
     }
     catch(e){

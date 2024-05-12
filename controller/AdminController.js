@@ -1,5 +1,6 @@
-const AdminDbOperation = require('../dboperations/AdminControllerSql')
-const jwt = require('jsonwebtoken')
+const AdminDbOperation = require('../dboperations/AdminControllerSql');
+const jwt = require('jsonwebtoken');
+const qr = require('qrcode');
 const dotenv = require('dotenv');
 dotenv.config();
 const sectrateKey = process.env.SECRET_KEY 
@@ -38,7 +39,23 @@ const AddAdmin=async(req,res)=>{
     res.status(200).json(createdUser);
 }
 
+const generateQr = async(req,res)=>{
+    try {
+        const address = req.body.address; // You can get the address from the request query
+    
+        // Generate QR code
+        const qrCode = await qr.toDataURL(address);
+        console.log(qrCode,'qrCode')
+        // Send the QR code image as a response
+        res.send(`<img src="${qrCode}" alt="QR Code"/>`);
+      } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+      }
+}
+
 module.exports={
     getAdminDetails,
-    AddAdmin
+    AddAdmin,
+    generateQr
 };

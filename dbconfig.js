@@ -3,7 +3,7 @@ const  config = {
     database: 'CourseWebsite',
     port:1433,
     user: 'Goofy', // Replace with your SQL Server username
-    password: 'Goofina@98', // Replace with your SQL Server password
+    password: 'Goofina@20', // Replace with your SQL Server password
     options: {
       trustedConnection: true, // Use Windows Authentication
       encrypt: false,

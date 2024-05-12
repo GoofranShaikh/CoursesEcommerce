@@ -10,11 +10,13 @@ const AuthenticateRequest =(req,res,next)=>{
         return res.status(401).json({ error: 'Unauthorized - No token provided' });
     }
     const decodedToken=jwt.verify(token,secret)
+    console.log(decodedToken,'decodedToken')
+    console.log( req.body.userId,' req.body.userId')
     if(decodedToken.userId == req.body.userId){
         next()
     }
     else{
-        return res.status(403).json({ error: 'Forbidden - Invalid token' });
+        return res.status(403).json({ error: 'Forbidden - Invalid tokens' });
     }
 
     }
